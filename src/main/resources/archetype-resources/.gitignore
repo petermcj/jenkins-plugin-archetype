@@ -1,0 +1,20 @@
+# Maven build output
+target/
+*.class
+
+# IDE files
+.idea/
+*.iml
+*.iws
+*.ipr
+.eclipse
+.project
+.classpath
+.settings/
+*.swp
+
+# macOS
+.DS_Store
+
+# Jenkins local test instance (created by mvn hpi:run)
+work/

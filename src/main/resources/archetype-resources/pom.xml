@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.jenkins-ci.plugins</groupId>
+    <artifactId>plugin</artifactId>
+    <!-- Renovate/Dependabot will keep this current. Requires JDK 17 and Jenkins 2.479+. -->
+    <version>5.7</version>
+    <relativePath/>
+  </parent>
+
+  <groupId>${groupId}</groupId>
+  <artifactId>${artifactId}</artifactId>
+  <version>${version}</version>
+  <packaging>hpi</packaging>
+
+  <name>${artifactId}</name>
+  <description>A Jenkins plugin</description>
+
+  <properties>
+    <!-- Target Jenkins LTS version. Update to the latest LTS release. -->
+    <jenkins.version>2.504.1</jenkins.version>
+  </properties>
+
+  <!--
+    Dependencies are version-managed by the Jenkins BOM included in the parent POM.
+    Add plugin dependencies below as needed — omit <version> tags; BOM manages them.
+
+    Example — Pipeline support:
+    <dependency>
+      <groupId>org.jenkins-ci.plugins.workflow</groupId>
+      <artifactId>workflow-step-api</artifactId>
+      <optional>true</optional>
+    </dependency>
+  -->
+  <dependencies/>
+
+  <repositories>
+    <repository>
+      <id>repo.jenkins-ci.org</id>
+      <url>https://repo.jenkins-ci.org/public/</url>
+    </repository>
+  </repositories>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>repo.jenkins-ci.org</id>
+      <url>https://repo.jenkins-ci.org/public/</url>
+    </pluginRepository>
+  </pluginRepositories>
+
+</project>

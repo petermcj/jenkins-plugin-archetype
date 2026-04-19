@@ -14,13 +14,22 @@
 
   <groupId>${groupId}</groupId>
   <artifactId>${artifactId}</artifactId>
-  <version>${version}</version>
+  <!--
+    CI-friendly incremental version: revision is the base (e.g. "1.0"), changelist
+    is "-SNAPSHOT" locally and "-rc<N>.<sha>" on ci.jenkins.io.
+    See https://github.com/jenkinsci/incrementals-tools
+  -->
+  <version>${revision}${changelist}</version>
   <packaging>hpi</packaging>
 
   <name>${artifactId}</name>
   <description>A Jenkins plugin</description>
 
   <properties>
+    <!-- Incrementals versioning — do not change these property names. -->
+    <revision>1.0</revision>
+    <changelist>-SNAPSHOT</changelist>
+
     <!-- Target Jenkins LTS version. Update to the latest LTS release. -->
     <jenkins.version>2.504.1</jenkins.version>
   </properties>
@@ -37,6 +46,43 @@
     </dependency>
   -->
   <dependencies/>
+
+  <build>
+    <plugins>
+      <!--
+        Resolves ${revision}${changelist} in the installed/deployed POM so
+        downstream consumers see a concrete version string.
+      -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>flatten-maven-plugin</artifactId>
+        <version>1.6.0</version>
+        <configuration>
+          <updatePomFile>true</updatePomFile>
+          <flattenMode>resolveCiFriendliesOnly</flattenMode>
+        </configuration>
+        <executions>
+          <execution>
+            <id>flatten</id>
+            <phase>process-resources</phase>
+            <goals><goal>flatten</goal></goals>
+          </execution>
+          <execution>
+            <id>flatten.clean</id>
+            <phase>clean</phase>
+            <goals><goal>clean</goal></goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <scm>
+    <connection>scm:git:https://github.com/${groupId}/${artifactId}-plugin.git</connection>
+    <developerConnection>scm:git:https://github.com/${groupId}/${artifactId}-plugin.git</developerConnection>
+    <tag>${scmTag}</tag>
+    <url>https://github.com/${groupId}/${artifactId}-plugin</url>
+  </scm>
 
   <repositories>
     <repository>

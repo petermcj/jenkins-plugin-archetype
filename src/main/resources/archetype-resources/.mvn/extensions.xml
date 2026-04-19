@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extensions>
+  <!--
+    Incrementals support: lets ci.jenkins.io publish per-commit "incremental"
+    releases with version strings like 1.0-rc1234.abc123.
+    See https://github.com/jenkinsci/incrementals-tools
+  -->
+  <extension>
+    <groupId>io.jenkins.tools.incrementals</groupId>
+    <artifactId>git-changelist-maven-extension</artifactId>
+    <version>1.8</version>
+  </extension>
+</extensions>

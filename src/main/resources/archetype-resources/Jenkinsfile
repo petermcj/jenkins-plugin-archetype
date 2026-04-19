@@ -1,0 +1,15 @@
+/*
+ * Builds the plugin on ci.jenkins.io using the standard Jenkins pipeline library.
+ * https://github.com/jenkins-infra/pipeline-library
+ *
+ * Platforms and JDK versions to test against. Remove entries you don't need.
+ * JDK 21 is recommended; JDK 17 is the minimum for plugin-pom 5.x.
+ */
+buildPlugin(
+  useContainerAgent: true,
+  configurations: [
+    [platform: 'linux',   jdk: 21],
+    [platform: 'linux',   jdk: 17],
+    [platform: 'windows', jdk: 21],
+  ]
+)

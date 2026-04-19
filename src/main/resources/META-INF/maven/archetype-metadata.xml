@@ -15,6 +15,15 @@
         <include>pom.xml</include>
         <include>gitignore</include>
         <include>CLAUDE.md</include>
+        <include>Jenkinsfile</include>
+      </includes>
+    </fileSet>
+
+    <!-- Incrementals Maven extension -->
+    <fileSet filtered="true" encoding="UTF-8">
+      <directory>.mvn</directory>
+      <includes>
+        <include>extensions.xml</include>
       </includes>
     </fileSet>
 

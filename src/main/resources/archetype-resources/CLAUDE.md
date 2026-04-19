@@ -7,17 +7,17 @@ A Jenkins plugin generated from the **Jenkins Plugin TDD Archetype**.
 ## Project layout
 
 ```
-src/main/java/${package}/
+src/main/java/${packageInPathFormat}/
   SampleBuilder.java          # Example Freestyle + Pipeline build step
   ai/
     AiAgentBuilder.java       # AI agent build step — override invokeAgent()
 
-src/main/resources/${package}/
+src/main/resources/${packageInPathFormat}/
   SampleBuilder/config.jelly  # UI form for SampleBuilder
   ai/AiAgentBuilder/config.jelly
   Messages.properties         # Localised display names
 
-src/test/java/${package}/
+src/test/java/${packageInPathFormat}/
   SampleBuilderTest.java      # JUnit 5 tests (TDD-first)
   ai/AiAgentBuilderTest.java
 ```
@@ -44,7 +44,7 @@ mvn package -DskipTests
 
 ## TDD workflow
 
-1. Write a **failing** test in `src/test/java/${package}/`
+1. Write a **failing** test in `src/test/java/${packageInPathFormat}/`
 2. Run `mvn test` — confirm the test fails
 3. Implement the minimum code to make it pass
 4. Run `mvn test` — all tests must be green
@@ -59,7 +59,7 @@ Never commit with failing tests.
 1. Create `MyStep.java` extending `Builder implements SimpleBuildStep`
 2. Annotate constructor with `@DataBoundConstructor`, optional fields with `@DataBoundSetter`
 3. Add `@Symbol("myStep")` on the inner `DescriptorImpl` for Pipeline DSL support
-4. Create `src/main/resources/${package}/MyStep/config.jelly` for the UI
+4. Create `src/main/resources/${packageInPathFormat}/MyStep/config.jelly` for the UI
 5. Add a display name to `Messages.properties`
 6. Write tests in `MyStepTest.java` — config roundtrip test first
 

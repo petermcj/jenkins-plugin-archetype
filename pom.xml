@@ -35,6 +35,18 @@
         <version>${archetype-packaging.version}</version>
       </extension>
     </extensions>
+
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <!-- Include dot-files (.gitignore etc.) that Maven excludes by default -->
+        <filtering>false</filtering>
+        <includes>
+          <include>**</include>
+        </includes>
+      </resource>
+    </resources>
+
     <pluginManagement>
       <plugins>
         <plugin>

@@ -13,7 +13,7 @@
       <directory></directory>
       <includes>
         <include>pom.xml</include>
-        <include>.gitignore</include>
+        <include>gitignore</include>
         <include>CLAUDE.md</include>
       </includes>
     </fileSet>

@@ -1,4 +1,4 @@
-package ${package}.ai;
+package ${package};
 
 import hudson.Extension;
 import hudson.FilePath;
